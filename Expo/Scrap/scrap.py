@@ -1,73 +1,68 @@
-import nltk
-from nltk.sentiment import SentimentIntensityAnalyzer
+import googleapiclient.discovery
 import mysql.connector
-from langdetect import detect
-import pandas as pd
+from datetime import datetime
 
-# Primero, asegúrate de que has descargado los recursos necesarios de NLTK
-nltk.download('vader_lexicon')
-nltk.download('punkt')
+# Configura tus credenciales y parámetros de conexión aquí
+api_key = 'AIzaSyCndpl4zIQwjH78HblXumy-UwIet5WOESA'
+video_id = 'AjzMrDla0OA'
+mysql_config = {
+    'user': 'root',
+    'password': '',
+    'host': 'localhost',
+    'database': 'python'
+}
+# Inicia la API de YouTube
+youtube = googleapiclient.discovery.build('youtube', 'v3', developerKey=api_key)
 
-# Configuración para conectarse a la base de datos
-db_connection = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='',
-    database='python'
-)
+# Recupera todos los comentarios del video manejando la paginación
+def get_all_comments(video_id):
+    comments = []
+    page_token = None
+    while True:
+        response = youtube.commentThreads().list(
+            part='snippet',
+            videoId=video_id,
+            maxResults=100,  # Puedes ajustar esto hasta un máximo de 100
+            pageToken=page_token,
+            textFormat='plainText'
+        ).execute()
 
-# Crear un analizador de sentimiento
-sia = SentimentIntensityAnalyzer()
+        for item in response['items']:
+            comment_snippet = item['snippet']['topLevelComment']['snippet']
+            comment = comment_snippet['textDisplay']
+            author = comment_snippet['authorDisplayName']
+            likes = comment_snippet['likeCount']
+            comment_id = item['snippet']['topLevelComment']['id']
+            published_at = datetime.strptime(comment_snippet['publishedAt'], '%Y-%m-%dT%H:%M:%S%z')
+            comments.append((author, comment, likes, comment_id, published_at))
 
-try:
-    cursor = db_connection.cursor(dictionary=True)
-    # Seleccionar todos los comentarios
-    sql_query = "SELECT * FROM comments;"
-    cursor.execute(sql_query)
-    comments = cursor.fetchall()
+        # Si no hay un nextPageToken, hemos llegado al final de los comentarios
+        page_token = response.get('nextPageToken')
+        if not page_token:
+            break
 
-    # Lista para almacenar los resultados
-    results = []
+    return comments
 
-    # Procesar cada comentario
-    for comment in comments:
-        text = comment['comment']
-
-        # Detectar el idioma del comentario
+# Conecta a MySQL y almacena los comentarios
+def store_comments(comments):
+    connection = mysql.connector.connect(**mysql_config)
+    cursor = connection.cursor()
+    
+    # Inserta los datos en la tabla de comentarios
+    insert_stmt = (
+        "INSERT INTO comments (author, comment, likes, comment_id, published_at) "
+        "VALUES (%s, %s, %s, %s, %s)"
+    )
+    for comment_data in comments:
         try:
-            if detect(text) == 'en':
-                # Calcular el puntaje de sentimiento
-                sentiment_score = sia.polarity_scores(text)
+            cursor.execute(insert_stmt, comment_data)
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+    
+    connection.commit()
+    cursor.close()
+    connection.close()
 
-                # Clasificar el sentimiento basado en el puntaje compuesto
-                sentiment_class = 'neutral'
-                if sentiment_score['compound'] > 0.05:
-                    sentiment_class = 'positive'
-                elif sentiment_score['compound'] < -0.05:
-                    sentiment_class = 'negative'
-
-                # Agregar los detalles del comentario a los resultados
-                results.append({
-                    'comment': text,
-                    'comment_length': len(text.split()),  # Longitud del comentario en palabras
-                    'comment_id': comment['comment_id'],
-                    'author': comment['author'],
-                    'likes': comment['likes'],
-                    'published_at': comment['published_at'],
-                    'neg': sentiment_score['neg'],
-                    'neu': sentiment_score['neu'],
-                    'pos': sentiment_score['pos'],
-                    'compound': sentiment_score['compound'],
-                    'sentiment_class': sentiment_class  # Clase de sentimiento
-                })
-        except Exception as e:
-            print(f"Error al detectar el idioma del comentario {comment['comment_id']}: {e}")
-
-finally:
-    if db_connection.is_connected():
-        cursor.close()
-        db_connection.close()
-
-# Guardar los resultados en un archivo CSV
-df = pd.DataFrame(results)
-df.to_csv('sentiment_analysis_results.csv', index=False)
+# Ejecuta el script
+comments = get_all_comments(video_id)
+store_comments(comments)

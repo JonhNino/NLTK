@@ -32,20 +32,20 @@ try:
     # Procesar cada comentario
     for comment in comments:
         text = comment['comment']
-        
+
         # Detectar el idioma del comentario
         try:
             if detect(text) == 'en':
                 # Calcular el puntaje de sentimiento
                 sentiment_score = sia.polarity_scores(text)
-                
+
                 # Clasificar el sentimiento basado en el puntaje compuesto
                 sentiment_class = 'neutral'
                 if sentiment_score['compound'] > 0.05:
                     sentiment_class = 'positive'
                 elif sentiment_score['compound'] < -0.05:
                     sentiment_class = 'negative'
-                
+
                 # Agregar los detalles del comentario a los resultados
                 results.append({
                     'comment': text,

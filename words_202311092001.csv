@@ -1,0 +1,148 @@
+"id";"content";"pos_tag";"description"
+517;dos;NUM;numeral
+518;tres;NUM;numeral
+519;vals;NOUN;sustantivo
+520;en;ADP;adposición
+521;las;DET;determinante
+522;ramas;NOUN;sustantivo
+523;Poeta;PROPN;sustantivo propio
+524;en;ADP;adposición
+525;Nueva;PROPN;sustantivo propio
+526;York;PROPN;sustantivo propio
+527;cayó;VERB;verbo
+528;una;DET;determinante
+529;hoja;NOUN;sustantivo
+530;y;CCONJ;conjunción coordinada
+531;dos;NUM;numeral
+532;y;CCONJ;conjunción coordinada
+533;tres;NUM;numeral
+534;por;ADP;adposición
+535;la;DET;determinante
+536;luna;NOUN;sustantivo
+537;me;PRON;pronombre
+538;daba;VERB;verbo
+539;un;DET;determinante
+540;pez;NOUN;sustantivo
+541;el;DET;determinante
+542;agua;NOUN;sustantivo
+543;duerme;VERB;verbo
+544;una;DET;determinante
+545;hora;NOUN;sustantivo
+546;y;CCONJ;conjunción coordinada
+547;el;DET;determinante
+548;mar;NOUN;sustantivo
+549;blanco;ADJ;adjetivo
+550;duerme;VERB;verbo
+551;"100";NUM;numeral
+552;la;DET;determinante
+553;dama;NOUN;sustantivo
+554;estaba;AUX;auxiliar
+555;muerta;ADJ;adjetivo
+556;en;ADP;adposición
+557;la;DET;determinante
+558;rama;NOUN;sustantivo
+559;la;DET;determinante
+560;monja;NOUN;sustantivo
+561;cantaba;VERB;verbo
+562;dentro;ADV;adverbio
+563;de;ADP;adposición
+564;la;DET;determinante
+565;llorona;NOUN;sustantivo
+566;La;DET;determinante
+567;niña;NOUN;sustantivo
+568;iba;VERB;verbo
+569;por;ADP;adposición
+570;el;DET;determinante
+571;pino;NOUN;sustantivo
+572;a;ADP;adposición
+573;la;DET;determinante
+574;piña;NOUN;sustantivo
+575;y;CCONJ;conjunción coordinada
+576;el;DET;determinante
+577;pino;NOUN;sustantivo
+578;buscaba;VERB;verbo
+579;la;DET;determinante
+580;plumilla;NOUN;sustantivo
+581;del;ADP;adposición
+582;trino;NOUN;sustantivo
+583;pero;CCONJ;conjunción coordinada
+584;el;DET;determinante
+585;ruiseñor;NOUN;sustantivo
+586;lloraba;VERB;verbo
+587;sus;DET;determinante
+588;heridas;NOUN;sustantivo
+589;alrededor;ADV;adverbio
+590;y;CCONJ;conjunción coordinada
+591;yo;PRON;pronombre
+592;también;ADV;adverbio
+593;porque;SCONJ;conjunción subordinada
+594;cayó;VERB;verbo
+595;una;DET;determinante
+596;hoja;NOUN;sustantivo
+597;y;CCONJ;conjunción coordinada
+598;dos;NUM;numeral
+599;y;CCONJ;conjunción coordinada
+600;tres;NUM;numeral
+601;y;CCONJ;conjunción coordinada
+602;una;DET;determinante
+603;cabeza;NOUN;sustantivo
+604;de;ADP;adposición
+605;cristal;NOUN;sustantivo
+606;y;CCONJ;conjunción coordinada
+607;un;DET;determinante
+608;violín;NOUN;sustantivo
+609;de;ADP;adposición
+610;papel;NOUN;sustantivo
+611;y;CCONJ;conjunción coordinada
+612;la;DET;determinante
+613;nieve;NOUN;sustantivo
+614;podría;AUX;auxiliar
+615;ir;VERB;verbo
+616;a;ADP;adposición
+617;nieve;NOUN;sustantivo
+618;podría;AUX;auxiliar
+619;con;ADP;adposición
+620;el;DET;determinante
+621;mundo;NOUN;sustantivo
+622;y;CCONJ;conjunción coordinada
+623;si;SCONJ;conjunción subordinada
+624;la;DET;determinante
+625;nieve;NOUN;sustantivo
+626;durmiera;VERB;verbo
+627;un;DET;determinante
+628;mes;NOUN;sustantivo
+629;y;CCONJ;conjunción coordinada
+630;las;DET;determinante
+631;ramas;NOUN;sustantivo
+632;luchaban;VERB;verbo
+633;con;ADP;adposición
+634;el;DET;determinante
+635;mundo;NOUN;sustantivo
+636;una;PRON;pronombre
+637;a;ADP;adposición
+638;una;DET;determinante
+639;dos;NUM;numeral
+640;a;ADP;adposición
+641;dos;NUM;numeral
+642;y;CCONJ;conjunción coordinada
+643;tres;NUM;numeral
+644;a;ADP;adposición
+645;tres;NUM;numeral
+646;oruro;ADJ;adjetivo
+647;Marfil;PROPN;sustantivo propio
+648;carnes;NOUN;sustantivo
+649;invisibles;ADJ;adjetivo
+650;o;CCONJ;conjunción coordinada
+651;golfos;NOUN;sustantivo
+652;en;ADP;adposición
+653;hormigas;NOUN;sustantivo
+654;del;ADP;adposición
+655;amanecer;NOUN;sustantivo
+656;con;ADP;adposición
+657;muy;ADV;adverbio
+658;de;ADP;adposición
+659;las;DET;determinante
+660;ramas;NOUN;sustantivo
+661;con;ADP;adposición
+662;el;DET;determinante
+663;aire;NOUN;sustantivo

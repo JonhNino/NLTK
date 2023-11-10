@@ -41,4 +41,4 @@ def record_audio_to_file(file_path, record_seconds):
     wf.close()
 
 # Utilizar la función para grabar audio
-record_audio_to_file('output.wav', 60)  # Grabar por 10 segundos
+record_audio_to_file('output.wav', 300)  # Grabar por 10 segundos

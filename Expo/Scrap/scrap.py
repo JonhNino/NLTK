@@ -3,7 +3,7 @@ import mysql.connector
 from datetime import datetime
 
 # Configura tus credenciales y parámetros de conexión aquí
-api_key = 'AIzaSyCndpl4zIQwjH78HblXumy-UwIet5WOESA'
+api_key = ''
 video_id = 'AjzMrDla0OA'
 mysql_config = {
     'user': 'root',
